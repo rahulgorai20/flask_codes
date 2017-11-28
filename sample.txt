@@ -1,0 +1,159 @@
+from flask import Flask, render_template
+import xlrd
+book = xlrd.open_workbook("Book.xlsx")
+sheet = book.sheet_by_index(0)
+app = Flask(__name__)
+@app.route('/')
+def getdays(sheets):
+  ndays=sheets.ncols
+  sun="SUN"
+  count=0;
+  week1=[];
+  week2=[];
+  for i in range(0,ndays):
+     day=sheets.cell(0,i).value
+     week1.append(day)
+     count=count+1;
+     if (day==sun):
+        break;
+  return week1
+
+
+def index():
+    week1=getdays(sheet)
+    day1=week1[0]
+    return render_template('index.html', day1=day1)
+
+
+if __name__ == "__main__":
+    app.run()
+
+--------------------------------------------------------
+
+import xlrd
+
+book = xlrd.open_workbook("Book.xlsx")
+sheet = book.sheet_by_index(0)
+ndays=sheet.ncols
+sun="SUN"
+count=0;
+
+week1=[];
+week2=[];
+for i in range(0,ndays):
+    day=sheet.cell(0,i).value
+    week1.append(day)
+    count=count+1;
+    if (day==sun):
+        break;
+print count
+print week1[0]
+
+------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    {{author}} app
+  </title>
+<style>
+.flex-container {
+  display: flex;
+  background-color:lightgrey;
+  height: 900px;
+  border-radius: 5px;
+}
+
+.flex-container>div {
+  background-color: grey;
+  margin: 10px;
+  padding:20px;
+  font-size: 30px;
+  min-height:800px;
+}
+table
+{
+  padding: 10px;
+  margin: 5px;
+}
+th
+{
+  background-color: slategrey;
+  color: white;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+td
+{
+  background-color: lightgrey;
+  color: black;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+</style>
+
+</head>
+<body>
+
+<div class="flex-container">
+  <div style="flex-grow:8">
+
+     <div>
+         <table>
+           <tr ><th colspan=7>MONTH</th></tr>
+           <tr>
+               <td>{{day1}}</td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+              <td>P</td>
+              <td>P</td>
+              <td>P</td>
+              <td>P</td>
+              <td>P</td>
+              <td>P</td>
+              <td>P</td>
+           </tr>
+
+           <tr>
+             <td>M</td>
+             <td>M</td>
+             <td>M</td>
+             <td>M</td>
+             <td>M</td>
+             <td>M</td>
+             <td>M</td>
+           </tr>
+        </table>
+
+
+     </div>
+
+  </div>
+  <div style="flex-grow:2">
+     <h3>HELLO {{name}} !</h3>
+  </div>
+</div>
+
+
+</body>
+</html>
