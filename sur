@@ -1,0 +1,85 @@
+index.html
+----------
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function onClick(month, year) {
+            month = 11
+            year = 2017
+            week = 4
+            fetch('/getDates?month=' + month + '&year=' + year)
+                .then((response) => {
+                    return response.json()
+                })
+                .then((result)=>{
+                    console.log(result.days[1][1]);
+                    var x="11"
+                    for(var i=0;i<7;i++)
+                    {
+                      const day = result.days[week][i];
+                      document.getElementById(x).innerHTML = (day !== 0)? day: "";
+                      x++;
+                    }
+                })
+                .catch(err => console.log(err))
+        }
+    </script>
+</head>
+
+<body>
+
+
+    <table>
+      <tr>
+        <td>M</td>
+        <td>T</td>
+        <td>W</td>
+        <td>TH</td>
+        <td>F</td>
+        <td>S</td>
+        <td>SUN</td>
+      </tr>
+      <tr>
+        <td id="11"></td>
+        <td id="12"></td>
+        <td id="13"></td>
+        <td id="14"></td>
+        <td id="15"></td>
+        <td id="16"></td>
+        <td id="17"></td>
+      </tr>
+    </table>
+    <input type="button" value="CLICK" onclick="onClick()">
+
+
+</body>
+
+</html>
+
+-------------------------------------
+hello.py 
+
+
+from flask import Flask, render_template, request
+import calendar
+import json
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return render_template('index.html')
+
+
+@app.route('/getDates')
+def get_dates():
+    month = request.args.get('month', default = 1, type = int)
+    year = request.args.get('year', default = '2017', type = int)
+    print month, year, type(month)
+    days = calendar.monthcalendar(year, month)
+    a = {"days":days}
+    return json.dumps(a)
+
+if __name__ == "__main__":
+    app.run(debug=True)
