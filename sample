@@ -1,0 +1,358 @@
+<html>
+<head>
+    <script>
+     function current_month()
+     {
+            var i;
+            var today = new Date();
+            var month = new Array();
+            month[0] = "JANUARY";
+            month[1] = "FEBRUARY";
+            month[2] = "MARCH";
+            month[3] = "APRIL";
+            month[4] = "MAY";
+            month[5] = "JUNE";
+            month[6] = "JULY";
+            month[7] = "AUGUST";
+            month[8] = "SEPTEMBER";
+            month[9] = "OCTOBER";
+            month[10] = "NOVEMBER";
+            month[11] = "DECEMBER";
+            var today_month=month[today.getMonth()];
+            for (i=1;i<13;i++)
+            {
+              var table_month=document.getElementById("this_year").rows[i].cells[0].innerHTML;
+              if(table_month==today_month)
+              {
+                 document.getElementById("this_year").rows[i].cells[0].setAttribute('id','curr_month');
+              }
+            }
+            var allocated=true;
+
+     }
+     window.onload = current_month;
+    </script>
+</head>
+<style>
+.flex-container {
+  display: flex;
+  justify-content: center;
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+
+.flex-container>div {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  line-height: 75px;
+  font-size: 30px;
+  min-height: 100%;
+  overflow: hidden;
+}
+#flex-container-lastweek
+{
+     display: flex;
+     justify-content: center;
+     background-color: lightgrey;
+     border-radius: 10px;
+     flex-direction: column;
+}
+#flex-container-lastweek>div {
+  background-color: lightslategray;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  border-radius:5px;
+  min-height: inherit;
+}
+  p
+  {
+        font-family: "Open Sans", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+        font-weight: lighter;
+        font-size: 20px;
+
+  }
+  table
+{
+    width: 100%;
+    padding: 10px;
+
+}
+th
+{
+    font-family: "Open Sans", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    font-weight: normal;
+    background-color: darkslategrey;
+    border-radius: 5px;
+    color: white;
+}
+td
+{
+    font-family: "Open Sans", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    color: black;
+    font-size: 12px;
+    line-height: 22px;
+    text-align: center;
+    font-weight: normal;
+    text-align: center;
+    background-color: lightgrey;
+    border-radius: 2px;
+}
+#curr_month
+{
+    color: white;
+    background-color: red;
+    font-size: 14px;
+    font-weight:bold;
+    animation-name: curr_month_animation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+@keyframes curr_month_animation {
+    from {background-color: red;}
+    to {background-color: black;}
+}
+a:hover {
+    font-weight:bold;
+    font-size:14px;
+}
+#month_view_div
+{
+    display:none;
+}
+#each_week
+{
+    display:none;
+}
+</style>
+</head>
+<body>
+<div class="flex-container">
+  <div style="flex-grow: 8; ">
+
+      <div>
+          <table>
+              <tr>
+                  <td>MONTH WISE ROSTER VIEW</td>
+                  <td>YEAR WISE ROSTER VIEW</td>
+              </tr>
+              <tr></tr>
+              <tr></tr>
+          </table>
+      </div>
+      <!-- MONTH WISE VIEW BEGINS HERE -->
+      <div id="month_view_div">
+          <div style="margin-top: 50px;">
+          <div id="last-month">
+              <table>
+                <tr>
+                  <td><p id="clicked_month" align="center" style="background-color: lightslategray; color: #f1f1f1;font-weight: bold;font-size: 12px; border-radius: 2px;"></p></td>
+                </tr>
+              </table>
+         <div id="flex-container-lastweek">
+
+          <div style="flex-grow: 4;">
+              <div id="each_week">
+              <table>
+                  <tr>
+                    <th colspan="8" style="background-color: black; color: white;font-weight: bold;border-radius:5px;" id="week_number" ></th>
+                  </tr>
+              <tr>
+                  <th></th>
+                  <th>M</th>
+                  <th>T</th>
+                  <th>W</th>
+                  <th>Th</th>
+                  <th>F</th>
+                  <th style="background-color: orange">S</th>
+                  <th style="background-color: orange">Sun</th>
+              </tr>
+              <tr>
+                  <th></th>
+                  <th id="11"></th>
+                  <th id="12"></th>
+                  <th id="13"></th>
+                  <th id="14"></th>
+                  <th id="15"></th>
+                  <th id="16" style="background-color: orange"></th>
+                  <th id="17" style="background-color: orange"></th>
+              </tr>
+              <tr>
+                  <td>AJITH</td>
+                  <td>P</td>
+                  <td>P</td>
+                  <td>P</td>
+                  <td>P</td>
+                  <td>P</td>
+                  <td>P</td>
+                  <td>P</td>
+              </tr>
+              </table>
+              </div>
+          </div>
+
+        </div>
+        </div>
+          </div>
+
+
+
+
+
+
+
+
+      </div>
+      <!-- END OF MONTH WISE VIEW -->
+
+  </div>
+  <div style="flex-grow: 2; ">
+     <!-- <div><img src="SG-LOGO.jpeg" style="height: 10%; width: 40%; object-fit: contain;" align="center"/></div> -->
+        <div >
+         <table>
+           <tr>
+             <td><p style="font-size:18px; background-color: #cc0000; border-top-left-radius: 10px; border-bottom-left-radius: 10px;  font-weight:lighter; color: white;">TEAM<br>VCD<br>2017</p></td>
+             <td><p style="font-size:12px; background-color: black; border-top-right-radius: 10px; border-bottom-right-radius: 10px; font-weight: lighter; color: white;">VIRTUALISATION<br>CONCEPTUALISATION<br>DELIVERY</p></td>
+           </tr>
+           <tr>
+             <td style="font-size:12px; background-color: #cc0000; border-top-left-radius: 10px; border-bottom-left-radius: 10px;  font-weight:lighter; color: white;">TODAY :</td>
+             <td style="font-size:12px; background-color: black; border-top-right-radius: 10px; border-bottom-right-radius: 10px; font-weight: lighter; color: white;"><p id="date" style="font-size: 12px;font-weight: bold;"></p></td>
+           </tr>
+         </table>
+       </div>
+      <div>
+          <table id="this_year">
+                  <th id="show_year"></th>
+                  <tr onclick="show_months(this)"><td id="">JANUARY</td></tr>
+                  <tr onclick="show_months(this)"><td id="">FEBRUARY</td></tr>
+                  <tr onclick="show_months(this)"><td id="">MARCH</td></tr>
+                  <tr onclick="show_months(this)"><td id="">APRIL</td></tr>
+                  <tr onclick="show_months(this)"><td id="">MAY</td></tr>
+                  <tr onclick="show_months(this)"><td id="">JUNE</td></tr>
+                  <tr onclick="show_months(this)"><td id="">JULY</td></tr>
+                  <tr onclick="show_months(this)"><td id="">AUGUST</td></tr>
+                  <tr onclick="show_months(this)"><td id="">SEPTEMBER</td></tr>
+                  <tr onclick="show_months(this)"><td id="">OCTOBER</td></tr>
+                  <tr onclick="show_months(this)"><td id="">NOVEMBER</td></tr>
+                  <tr onclick="show_months(this)"><td id="">DECEMBER</td></tr>
+          </table>
+      </div>
+      <div>
+          <table>
+                  <th>INDIVIDUAL WISE</th>
+                  <tr><td>AJITH</td></tr>
+                  <tr><td>NIDHI</td></tr>
+                  <tr><td>MALLIKARJUNA</td></tr>
+                  <tr><td>RAMYA</td></tr>
+                  <tr><td>TWINKLE</td></tr>
+                  <tr><td>PRASANA</td></tr>
+                  <tr><td>RAGHU</td></tr>
+                  <tr><td>RAHUL</td></tr>
+                  <tr><td>GIRISH</td></tr>
+          </table>
+      </div>
+
+  </div>
+</div>
+<script>
+var today = new Date();
+var month = new Array();
+month[0] = "January";
+month[1] = "February";
+month[2] = "March";
+month[3] = "April";
+month[4] = "May";
+month[5] = "June";
+month[6] = "July";
+month[7] = "August";
+month[8] = "September";
+month[9] = "October";
+month[10] = "November";
+month[11] = "December";
+var today_date=today.getDate();
+var today_month=month[today.getMonth()];
+var today_year=today.getFullYear();
+document.getElementById("date").innerHTML = today_month.toString()+" "+today_date.toString()+" , "+today_year.toString();
+document.getElementById("show_year").innerHTML ="THIS YEAR "+today_year.toString();
+function show_week(week_no)
+{
+            month = 11;
+            year = 2017;
+            week = week_no;
+            console.log(week);
+            fetch('/getDates?month=' + month + '&year=' + year)
+                .then((response) => {
+                    return response.json()
+                })
+                .then((result)=>{
+                    var x="11";
+                    for(var i=0;i<7;i++)
+                    {
+                      const day = result.days[week][i];
+                      console.log(result.days[week][i]);
+                      document.getElementById(x).innerHTML = (day !== 0)? day: "";
+                      x++;
+                    }
+                })
+                .catch(err => console.log(err))
+                document.getElementById("week_number").innerHTML ="WEEK "+week_no;
+                var div=document.getElementById("each_week");
+                document.getElementById(week_no).innerHTML=div.innerHTML;
+                div.style.display = "block";
+}
+function show_months(x)
+{
+    var div;
+    var n=5;
+    for (i=0;i<n;i++)
+    {
+       div=document.createElement("div");
+       document.getElementById('flex-container-lastweek').appendChild(div).setAttribute('id',i);
+       show_week(i);
+    }
+
+    var show_text=document.getElementById("this_year").rows[x.rowIndex].cells[0].innerHTML;
+    document.getElementById("clicked_month").innerHTML =show_text;
+    var z=document.getElementById("month_view_div");
+    if (z.style.display == "none")
+    {
+        z.style.display = "block";
+    }
+    else
+    {
+        z.style.display = "block";
+    }
+
+}
+
+</script>
+</body>
+</html>
+
+
+---------------------------------------------------------------
+from flask import Flask, render_template, request
+import calendar
+import json
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return render_template('view_rost.html')
+
+@app.route('/getDates')
+def get_dates():
+    month = request.args.get('month', default = 1, type = int)
+    year = request.args.get('year', default = '2017', type = int)
+    print month, year, type(month)
+    days = calendar.monthcalendar(year, month)
+    a = {"days":days}
+    return json.dumps(a)
+
+if __name__ == "__main__":
+    app.run(debug=True)
