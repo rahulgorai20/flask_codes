@@ -1,0 +1,476 @@
+<html>
+<head>
+</head>
+<style>
+.flex-container {
+  display: flex;
+  justify-content: center;
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+
+.flex-container>div {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  line-height: 75px;
+  font-size: 30px;
+  min-height: 100%;
+overflow: hidden;
+}
+#flex-container-showweeks
+{
+     display: flex;
+     justify-content: center;
+     background-color: lightgrey;
+     border-radius: 10px;
+     flex-direction: column;
+}
+#flex-container-showweeks>div {
+  background-color: lightslategray;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  border-radius:5px;
+  min-height: inherit;
+}
+#right-pane-title
+{
+    background-color: grey;
+    color: white;
+    animation-name: week_highlight;
+    animation-duration: 1s ;
+    border-radius: 10px;
+    animation-iteration-count: infinite;
+    font-weight: bold;
+}
+
+@keyframes week_highlight
+{
+  from {background-color: red;}
+    to {background-color: black;}
+
+
+}
+  p
+  {
+        font-family: "Open Sans", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+        font-weight: lighter;
+        font-size: 20px;
+
+  }
+  table
+{
+    width: 100%;
+    padding: 10px;
+
+}
+th
+{
+    font-family: "Open Sans", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    font-weight: normal;
+    background-color: darkslategrey;
+    border-radius: 5px;
+    color: white;
+}
+td
+{
+    font-family: "Open Sans", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    color: black;
+    font-size: 12px;
+    line-height: 22px;
+    text-align: center;
+    font-weight: normal;
+    text-align: center;
+    background-color: lightgrey;
+    border-radius: 2px;
+}
+
+#top-month
+{
+
+  width: 100%;
+}
+  #personal
+  {
+    background-color: slategrey;
+    border-radius: 5px;
+    height: inherit;
+  }
+  #vcd-banner
+  {
+
+  }
+  #button-left
+  {
+    background-color: #cc0000;
+    border: none;
+    color: white;
+    padding: 6px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 1px;
+    cursor: pointer;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+  }
+  #button-right
+  {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 6px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 1px;
+    cursor: pointer;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+  }
+  #last-month
+  {
+    background-color: lightgrey;
+    border-radius: 2px;
+    width: inherit;
+    min-height: 50%;
+  }
+
+</style>
+</head>
+<body>
+<div class="flex-container">
+  <div style="flex-grow: 8;  ">
+    <div id="top-month">
+        <table>
+        <tr>
+          <td><p style="font-size:20px; background-color: #cc0000; border-top-left-radius: 10px; border-bottom-left-radius: 10px; font-weight: bold; color: white;">&larr;</p></td>
+          <td><p style="font-size:20px; background-color: #cc0000; font-weight: lighter; color: white;">
+          <select>
+              <option>JANUARY</option>
+              <option>FEBRUARY</option>
+              <option>MARCH</option>
+              <option>APRIL</option>
+              <option>MAY</option>
+              <option>JUNE</option>
+              <option>JULY</option>
+              <option>AUGUST</option>
+              <option>SEPTEMBER</option>
+              <option >NOVEMBER</option>
+              <option>DECEMBER</option>
+
+          </select></p></td>
+          <td><p style="font-size:18px; background-color: black; font-weight: lighter; color: white;">
+              <select>
+                  <option>2017</option>
+                  <option>2018</option>
+                  <option>2019</option>
+              </select>
+          </p></td>
+          <td><p style="font-size:18px; background-color: black; border-top-right-radius: 10px; border-bottom-right-radius: 10px; font-weight: lighter; color: white;">	&rarr;</p></td
+        </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td><p style="font-size:14px; background-color: #cc0000; font-weight: bold; color: white;"> &#8801; SHIFT &#8801;</p></td>
+            <td><p style="font-size:14px; background-color: black; border-top-right-radius: 10px; border-bottom-right-radius: 10px; font-weight: bold; color: white;">ROSTER</p></td
+          </tr>
+        </table>
+    </div>
+
+    <div style="margin-top: 50px;" id="flex-container-showweeks" >
+
+      <div id="created_week1" style="flex-grow:2" >
+        <table id="week_table">
+          <tr>
+            <th colspan="15" style="background-color: darkgrey; color: #f1f1f1;"><p style="font-size:12px; color:white; font-weight:bold;" id="week_no"></p></th>
+          </tr>
+          <tr>
+            <th style="background-color:lightgrey;color:black; border-bottom-left-radius: 10px; border-top-left-radius: 10px;font-weight: bold;">DAYS</th>
+            <th>M</th>
+            <th>T</th>
+            <th>W</th>
+            <th>Th</th>
+            <th>F</th>
+            <th style="background-color: orange">S</th>
+            <th style="background-color: orange">Sun</th>
+            <td style="background-color:black;color: #f1f1f1;">P</td>
+            <td style="background-color:black;color: #f1f1f1; ">M</td>
+            <td style="background-color:black;color: #f1f1f1; ">A</td>
+            <td style="background-color:black;color: #f1f1f1; ">PRITCH</td>
+            <td style="background-color:black;color: #f1f1f1; ">ONCALL</td>
+            <td colspan="2" style="background-color:black;color: #f1f1f1; border-bottom-right-radius: 10px; border-top-right-radius: 10px;">SHIFT LEAD</td>
+          </tr>
+        <tr>
+            <th style=" background-color:lightgrey;color: black; border-bottom-left-radius: 10px; border-top-left-radius: 10px; font-weight: bold;">DATE</th>
+            <form method="post" action="">
+            <th><input type="text" name="" size="1"></th>
+            <th><input type="text" name="" size="1"></th>
+            <th><input type="text" name="" size="1"></th>
+            <th><input type="text" name="" size="1"></th>
+            <th><input type="text" name="" size="1"></th>
+            <th style="background-color: orange"><input type="text" name="" size="1"></th>
+            <th style="background-color: orange"><input type="text" name="" size="1"></th>
+            <th colspan="7" style="background-color:lightgrey; border-bottom-right-radius: 10px;border-top-right-radius: 10px;"></th>
+            </form>
+        </tr>
+        <tr>
+            <th style=" background-color: darkslategray; color: #f1f1f1; font-weight: bold;">AJITH</th>
+            <td><input type="text" name="AJITH" size="1" /></td>
+            <td><input type="text" name="AJITH" size="1" /></td>
+            <td><input type="text" name="AJITH" size="1" /></td>
+            <td><input type="text" name="AJITH" size="1" /></td>
+            <td><input type="text" name="AJITH" size="1" /></td>
+            <td><input type="text" name="AJITH" size="1" /></td>
+            <td><input type="text" name="AJITH" size="1" /></td>
+
+            <form>
+            <td><label><input type="radio"  value="P" name="ajith_shifts"/></label></td>
+            <td><label><input type="radio"  value="M" name="ajith_shifts"/></label></td>
+            <td><label><input type="radio"  value="A" name="ajith_shifts"/></label></td>
+            </form>
+            <td><label><input type="checkbox" /></label></td>
+            <td><label><input type="checkbox" /></label></td>
+            <td><label><input type="checkbox" /></label></td>
+            <td style=" border-bottom-right-radius: 10px;border-top-right-radius: 10px;"><button id="button-right" onclick="submit_for_individual(this)">&#10003;</button></td>
+        </tr>
+
+
+
+        <tr>
+            <td><button id="button-left">ASSIGN</button><button id="button-right">RESET</button><button id="button-right" onclick="add_week()">ADD WEEK</button></td>
+        </tr>
+        </table>
+
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <div style="flex-grow: 2">
+   <div><img src="SG-LOGO.jpg" style="height: 10%; width: 80%; object-fit: contain;" align="center"/></div>
+    <div id="vcd-banner">
+         <table>
+           <tr>
+             <td><p style="font-size:18px; background-color: #cc0000; border-top-left-radius: 10px; border-bottom-left-radius: 10px;  font-weight:lighter; color: white;">TEAM<br>VCD<br>2017</p></td>
+             <td><p style="font-size:12px; background-color: black; border-top-right-radius: 10px; border-bottom-right-radius: 10px; font-weight: lighter; color: white;">VIRTUALISATION<br>CONCEPTUALISATION<br>DELIVERY</p></td>
+           </tr>
+           <tr>
+             <td style="font-size:12px; background-color: #cc0000; border-top-left-radius: 10px; border-bottom-left-radius: 10px;  font-weight:lighter; color: white;">TODAY :</td>
+             <td style="font-size:12px; background-color: black; border-top-right-radius: 10px; border-bottom-right-radius: 10px; font-weight: lighter; color: white;"><p id="date" style="font-size: 12px;font-weight: bold;"></p></td>
+           </tr>
+
+         </table>
+    </div>
+    <div>
+    <table>
+      <tr>
+         <th colspan="2" >WEEK 1</th>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">SHIFT LEAD :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">ONCALL ENGINEER :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">MORNING SHIFT ENGINEER :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+         <th colspan="2">WEEK 2</th>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">SHIFT LEAD :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">ONCALL ENGINEER :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">MORNING SHIFT ENGINEER :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+         <th colspan="2">WEEK 3</th>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">SHIFT LEAD :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">ONCALL ENGINEER :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">MORNING SHIFT ENGINEER :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+         <th colspan="2" id="right-pane-title">WEEK 4</th>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">SHIFT LEAD :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">ONCALL ENGINEER :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">MORNING SHIFT ENGINEER :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+         <th colspan="2">WEEK 5</th>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">SHIFT LEAD :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">ONCALL ENGINEER :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+      <tr>
+        <td><p style="color: green; font-size: 12px;font-weight: bold; text-align: left;">MORNING SHIFT ENGINEER :</p> </td>
+        <td>MEMBER 1</td>
+      </tr>
+    </table>
+    </div>
+     <div >
+        <table>
+        <tr>
+          <td><p style="font-size:20px; background-color: #cc0000; border-top-left-radius: 10px; border-bottom-left-radius: 10px; font-weight: lighter; color: white;">MONTH'S</p></td>
+          <td><p style="font-size:20px; background-color: black; border-top-right-radius: 10px; border-bottom-right-radius: 10px; font-weight: lighter; color: white;">AGENDA</p></td>
+        </tr>
+        </table>
+       <div id="personal">
+          <table>
+            <tr>
+              <th style="font-size:12px; background-color: #cc0000; border-top-left-radius: 10px; border-bottom-left-radius: 10px; font-weight: bold; color: white;">AJITH<br>TODAY</th>
+              <th style="font-size:12px; background-color: #ff9f89; font-weight: bold; color: white;">NOVEMBER 3 F </th>
+            </tr>
+          </table>
+         <table>
+            <tr>
+              <td><p align="left" style="font-size:12px; font-weight: bold;">SHIFT :</p></td>
+              <td><p align="left" style="font-size:12px; font-weight: bold;">
+                <select>
+                  <option>P</option>
+                  <option>M</option>
+                  <option>A</option>
+                </select></p>
+              </td>
+            </tr>
+            <tr>
+              <td><p align="left" style="font-size:12px; font-weight: bold;">COMP OFF:</td>
+              <td><p align="left" style="font-size:12px; font-weight: bold;">
+                <select>
+                  <option>N/A</option>
+                  <option>APPROVE</option>
+                </select></p>
+              </td>
+            </tr>
+            <tr>
+              <td><p align="left" style="font-size:12px; font-weight: bold;">AD HOC CAB:</td>
+              <td><p align="left" style="font-size:12px; font-weight: bold;">
+                <select>
+                  <option>N/A</option>
+                  <option>ASSIGN</option>
+                </select></p>
+              </td>
+            </tr>
+            <tr>
+               <th colspan="2" style="background-color: #111111; border-radius: 5px;color: #f1f1f1; font-size: 10px;">VACATION</th>
+            </tr>
+            <tr>
+
+              <td align="left"><from><input type="date"></from></td>
+              <td>FROM</td>
+            </tr>
+            <tr>
+              <td align="left"><from><input type="date"></from></td>
+              <td>TO</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><button id="button-left">ASSIGN</button><button id="button-right">RESET</button></td>
+            </tr>
+          </table>
+       </div>
+
+
+    </div>
+  </div>
+</div>
+<script>
+var today = new Date();
+var month = new Array();
+month[0] = "January";
+month[1] = "February";
+month[2] = "March";
+month[3] = "April";
+month[4] = "May";
+month[5] = "June";
+month[6] = "July";
+month[7] = "August";
+month[8] = "September";
+month[9] = "October";
+month[10] = "November";
+month[11] = "December";
+var today_date=today.getDate();
+var today_month=month[today.getMonth()];
+var today_year=today.getFullYear();
+document.getElementById("date").innerHTML = today_month.toString()+" "+today_date.toString()+" , "+today_year.toString();
+var week_id=1;
+document.getElementById("week_no").innerHTML="WEEK"+week_id;
+function add_week()
+{
+       week_id++;
+       var new_week=document.createElement("div");
+       document.getElementById('flex-container-showweeks').appendChild(new_week).setAttribute('id',"created_week"+week_id);
+       document.getElementById("week_no").innerHTML="WEEK"+week_id;
+       document.getElementById("created_week"+week_id).innerHTML=document.getElementById('created_week1').innerHTML;
+}
+function submit_for_individual(name)
+{
+    var radios = document.getElementsByName('ajith_shifts');
+    for (var i = 0, length = radios.length; i < length; i++)
+    {
+       if (radios[i].checked)
+       {
+           for(var k=0;k<7;k++)
+             document.getElementsByName("AJITH")[k].value=radios[i].value;
+           break;
+       }
+    }
+}
+
+</script>
+</body>
+
+
+
